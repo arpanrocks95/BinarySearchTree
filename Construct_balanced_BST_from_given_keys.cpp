@@ -42,6 +42,7 @@ void selectionSort(int arr[], int n)
         swap(&arr[min_idx], &arr[i]);
     }
 }
+
 void createBalancedBST(struct node * &root,int arr[],int max,int min){
     if(min > max) return;
     int mid = (min + max) / 2;
