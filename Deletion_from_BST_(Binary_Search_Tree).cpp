@@ -45,9 +45,11 @@ void deleteNodeInBSTRecursive(struct node *&root, int data){
             deleteNodeInBSTRecursive(root->left, maxleft->key);
         }
         else{
-            struct node * child = (root->left) ? root->left : root->right;
-            root->key = child->key ;
-            free(child);
+            struct node * child  = (root->left) ? root->left : root->right;
+            struct node * parent = returnParentOFNodewithData(root->data,this->root);
+            if(parent->right == root) parent->right = child;
+            else parent->left = child;
+            free(root);
         }
     }
 
@@ -77,8 +79,6 @@ int main(){
     deleteNodeInBSTRecursive(root1, 25);
     inorder(root1);
     printf("\n");
-
-
 
     return 0;
 
